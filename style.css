@@ -55,8 +55,13 @@ img, button {
     resize: none;
     text-align: center;
 }
-
-
+.character-type {
+    border: 1px solid;
+    text-align: center;
+}
+character-wrap {
+    border: 1px solid black;
+}
 .container {
     width: 80%;
     height: 80vh;
