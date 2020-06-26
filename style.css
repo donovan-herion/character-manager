@@ -31,3 +31,28 @@ h2 {
 img, button {
     margin: 15px 0;
 }
+.image {
+    width: 280px;
+    height: 200px;
+    resize: none;
+}
+.name {
+    width: 280px;
+    height: 35px;
+    resize: none;
+    text-align: center;
+}
+.shortDescription {
+    width: 280px;
+    resize: none;
+    height: 100px;
+    text-align: center;
+}
+
+.description {
+    width: 280px;
+    height: 335px;
+    resize: none;
+    text-align: center;
+}
+
