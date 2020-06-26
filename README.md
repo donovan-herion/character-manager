@@ -14,7 +14,7 @@
 
 ### Specificity of the project
 
-A total of 12 teams will have access to this database and will modify it multiple times during the project
+A total of 12 teams will have access to this database and will modify it multiple times during the project.
 
 ---
 
