@@ -31,3 +31,18 @@ h2 {
 img, button {
     margin: 15px 0;
 }
+
+.container {
+    width: 80%;
+    height: 80vh;
+    background-color: rgb(255, 77, 77);
+    position: fixed;
+    left: 10%;
+    top: 10vh;
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
