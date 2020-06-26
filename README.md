@@ -1,3 +1,5 @@
+[Click here to see the preview](https://donovan-herion.github.io/character-manager/)
+
 # Team Kim & Donovan
 
 ## Project description
@@ -14,7 +16,6 @@
 
 A total of 12 teams will have access to this database and will modify it multiple times during the project
 
-
-[Click here to see the preview](https://donovan-herion.github.io/character-manager/)
+---
 
 ![](https://media.giphy.com/media/uTuLngvL9p0Xe/giphy.gif)
