@@ -9,5 +9,25 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 20vh auto;
-    width: 60%;
+    width: 70%;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+img, button {
+    margin: 15px 0;
 }
