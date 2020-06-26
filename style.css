@@ -28,8 +28,19 @@ h2 {
     margin: 10px 0;
 }
 
-img, button {
+img {
     margin: 15px 0;
+}
+
+a {
+    cursor: pointer;
+    margin: 15px auto;
+    padding: 5px;
+    width: 50%;
+    text-decoration: none;
+    color: black;
+    background-color: #acb0d3;
+    text-align: center;
 }
 .image {
     width: 280px;
