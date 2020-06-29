@@ -39,7 +39,7 @@ a {
     width: 50%;
     text-decoration: none;
     color: black;
-    background-color: #acb0d3;
+    background-color: #cecece;
     text-align: center;
 }
 
@@ -53,63 +53,55 @@ a {
     resize: none;
 }
 
-.columns {
-    width: 80%;
-    height: 80vh;
-    background-color: rgb(255, 77, 77);
-    position: fixed;
-    left: 10%;
-    top: 10vh;
-    border-radius: 40px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .name {
     height: 50px;
     width: 500px;
     border-top-left-radius: 3%;
 }
+
 .shortDescription {
     height: 250px;
     width: 500px;
 }
+
 .description {
     height: 450px;
     width: 500px;
 }
+
 .image {
     display: none;
 }
-label {
-    color: white;
-    width: 750px;
-    height: 750px;
-    background-color: thistle;
-    text-align: center;
-    align-items: center; 
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+
+ label { 
+     width: 80%;
+     padding: 5px;
+     color: white;
+     font-size: 2em;
+     font-weight: bold;
+ }
+
 label:hover {
     cursor: pointer;
 }
+
+input {
+    padding: 20px;
+    width: 80%;
+
+}
+
 .add_img { 
     background-color: none;
     width: 600px;
     padding-bottom: 30px;
 }
-label {
-    font-size: 20px;
-    border-bottom-right-radius: 3%;
-    border-top-right-radius: 3%;
-}
+
 .container {
     width: 80%;
     height: 80vh;
-    background-color: rgb(255, 77, 77);
+    padding: 5vh 0;
+    background-color: rgb(211, 211, 211);
     position: fixed;
     left: 10%;
     top: 10vh;
@@ -119,7 +111,4 @@ label {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-}
-textarea {
-    resize: none;
 }
