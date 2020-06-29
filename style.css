@@ -51,13 +51,8 @@ a {
     width: 280px;
     height: 200px;
     resize: none;
-/*.columns {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px;
-}*/
+}
+
 .columns {
     width: 80%;
     height: 80vh;
