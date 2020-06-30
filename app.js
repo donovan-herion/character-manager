@@ -50,8 +50,6 @@
       div.appendChild(modification);
       div.appendChild(newCharacter);
 
-      // display template in dom
-
       let mainContainer = document.querySelector(".main-flex-container");
 
       mainContainer.appendChild(div);
