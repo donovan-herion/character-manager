@@ -191,6 +191,8 @@
       let indexFromDataDeleteCharacter = e.target.getAttribute("data-deleteCharacter");
       deleteCharacter(indexFromDataDeleteCharacter);
 
+      console.log(indexFromDataDeleteCharacter)
+
       }
 
       function deleteCharacter(id) {
@@ -215,98 +217,115 @@
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
-          window.location.reload()
+          // window.location.reload() ne valide pas la fonction si active directement... probleme a regler
       }
-  }
+    }
+ });
 
 
+ // Popup Create character
 
+    // if (e.target.classList.contains("new-character-btn")) {
+      let newCharacterBtn = document.querySelector('.new-character-btn')
+      
+      newCharacterBtn.addEventListener('click', () => {
+        
+        let body = document.querySelector("body");
+        
+        let container = document.createElement("div");
+        container.classList.add("container");
+        
+        let nameLabel = document.createElement("label");
+        nameLabel.innerHTML = "Name of your character";
+        let nameInput = document.createElement("input");
+        
+        let shortDescriptionLabel = document.createElement("label");
+        shortDescriptionLabel.innerHTML = "Short description of the character";
+        let shortDescription = document.createElement("input");
+        
+        let fullDescriptionLabel = document.createElement("label");
+        fullDescriptionLabel.innerHTML = "Long description of the character";
+        let fullDescription = document.createElement("input");
+        
+        let imageURILabel = document.createElement("label");
+        imageURILabel.innerHTML = "Image Link";
+        let imageURI = document.createElement("input");
+        
+        let submitInput = document.createElement("input");
+        submitInput.value = "Create new character";
+        submitInput.setAttribute('type', 'submit')
+        
+        let closeBtn = document.createElement("button");
+        closeBtn.classList.add("close-btn");
+        closeBtn.innerHTML = "Close window";
+        
+        container.appendChild(nameLabel);
+        container.appendChild(nameInput);
+        container.appendChild(shortDescriptionLabel);
+        container.appendChild(shortDescription);
+        container.appendChild(fullDescriptionLabel);
+        container.appendChild(fullDescription);
+        container.appendChild(imageURILabel);
+        container.appendChild(imageURI);
+        container.appendChild(submitInput)
+        container.appendChild(closeBtn);
+        
+        body.appendChild(container);
+        
+        //create character for real
 
+        submitInput.addEventListener('click', () => {
 
+          
+          let nameInputValue = nameInput.value;
+          let shortDescriptionValue = shortDescription.value;
+          let fullDescriptionValue = fullDescription.value
+          
+          if(nameInputValue == false || shortDescriptionValue == false || fullDescriptionValue == false){
+            alert('The form has to be completed to create a new character'); 
+          } else {
+            createCharacter();
+          }
+          
+          async function createCharacter() {
 
+            let newCharacter = {
+              name : nameInputValue,
+              shortDescription : shortDescriptionValue,
+              description: fullDescriptionValue,
+              // image : result1,
+            }
 
-
-
-
-//*
-
-    // const deleteHero = id => {
-    //   const heroObject = JSON.stringify({
-    //     id: id
-    //   });
-  
-    //   let url = "http://localhost:3000/heroes/" + heroId;
-    //   fetch(url, {
-    //     method: "DELETE",
-    //     headers: new Headers({
-    //       "content-type": "application/json"
-    //     })
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
-    //     .catch(err => console.error(err));
-    //   console.log(heroId);
-    // };
-
-    // }
-
-  
-
-  //Popup Create character
-
-  //   if (e.target.classList.contains("new-character-btn")) {
-
-  //       let indexFromButtonId = e.target.getAttribute("data-newCharacter");
-  //       console.log("workeddd");
-  
-  //       let body = document.querySelector("body");
-  
-  //       let container = document.createElement("div");
-  //       container.classList.add("container");
-  
-  //       let nameLabel = document.createElement("label");
-  //       nameLabel.innerHTML = "Name of your character";
-  //       let nameInput = document.createElement("input");
-  
-  //       let shortDescriptionLabel = document.createElement("label");
-  //       shortDescriptionLabel.innerHTML = "Short description of the character";
-  //       let shortDescription = document.createElement("input");
-  
-  //       let fullDescriptionLabel = document.createElement("label");
-  //       fullDescriptionLabel.innerHTML = "Long description of the character";
-  //       let fullDescription = document.createElement("input");
-  
-  //       let imageURILabel = document.createElement("label");
-  //       imageURILabel.innerHTML = "Image Link";
-  //       let imageURI = document.createElement("input");
-  
-  //       let submitInput = document.createElement("input");
-  //       submitInput.value = "Create new character";
-  //       submitInput.setAttribute('type', 'submit')
-  
-  //       let closeBtn = document.createElement("button");
-  //       closeBtn.classList.add("close-btn");
-  //       closeBtn.innerHTML = "Close window";
-  
-  //       container.appendChild(nameLabel);
-  //       container.appendChild(nameInput);
-  //       container.appendChild(shortDescriptionLabel);
-  //       container.appendChild(shortDescription);
-  //       container.appendChild(fullDescriptionLabel);
-  //       container.appendChild(fullDescription);
-  //       container.appendChild(imageURILabel);
-  //       container.appendChild(imageURI);
-  //       container.appendChild(submitInput)
-  //       container.appendChild(closeBtn);
-  
-  //       body.appendChild(container);
-  
-  //       body.addEventListener("click", function (e) {
-  //         if (e.target.classList.contains("close-btn")) {
-  //           body.removeChild(container);
-  //         }
-  //       });
-  //     }
-  });
-  
+            const newCharacterInApi = await fetch("https://character-database.becode.xyz/characters", {
+              method: "POST",
+              headers: new Headers({
+                "Content-Type": "application/json"
+              }),
+              body: JSON.stringify(newCharacter),
+            });
+            return newCharacterInApi;
+          };
+        });   
+   
+      
+      
+      //remove creation character page
+      
+      body.addEventListener("click", function (e) {
+        if (e.target.classList.contains("close-btn")) {
+          body.removeChild(container);
+        }
+      })    
+  })
 })();
+
+// function encodeImageFileAsURL(element) {
+//   var file = element.files[0];
+//   reader = new FileReader();
+//   reader.onloadend = function() {
+//       result = reader.result;
+//       result1 = result.substring(23, result.length)
+//     console.log('RESULT', result1)
+//   }
+//   reader.readAsDataURL(file);
+// }
