@@ -49,6 +49,7 @@
       div.appendChild(moreInfo);
       div.appendChild(modification);
       div.appendChild(deleteCharacter);
+      
 
       let mainContainer = document.querySelector(".main-flex-container");
 

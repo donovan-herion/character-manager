@@ -41,10 +41,15 @@ h2 {
     margin: 10px 0;
 }
 
+a.modification-btn {
+   
+}
+
 img {
     margin: 15px 0;
-    height: 100px;
-
+    height: auto;
+    width: 100px;
+    display: block;
 }
 
 a {
@@ -57,7 +62,9 @@ a {
     background-color: #cecece;
     text-align: center;
 }
-
+more-info-btn {
+    
+}
 .center {
     text-align: center;
 }
