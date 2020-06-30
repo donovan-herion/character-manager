@@ -161,60 +161,62 @@
       });
     }
 
-    //Popup Create character
 
-    if (e.target.classList.contains("new-character-btn")) {
+  //Popup Create character
 
-        let indexFromButtonId = e.target.getAttribute("data-newCharacter");
-        console.log("workeddd");
+  //   if (e.target.classList.contains("new-character-btn")) {
+
+  //       let indexFromButtonId = e.target.getAttribute("data-newCharacter");
+  //       console.log("workeddd");
   
-        let body = document.querySelector("body");
+  //       let body = document.querySelector("body");
   
-        let container = document.createElement("div");
-        container.classList.add("container");
+  //       let container = document.createElement("div");
+  //       container.classList.add("container");
   
-        let nameLabel = document.createElement("label");
-        nameLabel.innerHTML = "Name of your character";
-        let nameInput = document.createElement("input");
+  //       let nameLabel = document.createElement("label");
+  //       nameLabel.innerHTML = "Name of your character";
+  //       let nameInput = document.createElement("input");
   
-        let shortDescriptionLabel = document.createElement("label");
-        shortDescriptionLabel.innerHTML = "Short description of the character";
-        let shortDescription = document.createElement("input");
+  //       let shortDescriptionLabel = document.createElement("label");
+  //       shortDescriptionLabel.innerHTML = "Short description of the character";
+  //       let shortDescription = document.createElement("input");
   
-        let fullDescriptionLabel = document.createElement("label");
-        fullDescriptionLabel.innerHTML = "Long description of the character";
-        let fullDescription = document.createElement("input");
+  //       let fullDescriptionLabel = document.createElement("label");
+  //       fullDescriptionLabel.innerHTML = "Long description of the character";
+  //       let fullDescription = document.createElement("input");
   
-        let imageURILabel = document.createElement("label");
-        imageURILabel.innerHTML = "Image Link";
-        let imageURI = document.createElement("input");
+  //       let imageURILabel = document.createElement("label");
+  //       imageURILabel.innerHTML = "Image Link";
+  //       let imageURI = document.createElement("input");
   
-        let submitInput = document.createElement("input");
-        submitInput.value = "Create new character";
-        submitInput.setAttribute('type', 'submit')
+  //       let submitInput = document.createElement("input");
+  //       submitInput.value = "Create new character";
+  //       submitInput.setAttribute('type', 'submit')
   
-        let closeBtn = document.createElement("button");
-        closeBtn.classList.add("close-btn");
-        closeBtn.innerHTML = "Close window";
+  //       let closeBtn = document.createElement("button");
+  //       closeBtn.classList.add("close-btn");
+  //       closeBtn.innerHTML = "Close window";
   
-        container.appendChild(nameLabel);
-        container.appendChild(nameInput);
-        container.appendChild(shortDescriptionLabel);
-        container.appendChild(shortDescription);
-        container.appendChild(fullDescriptionLabel);
-        container.appendChild(fullDescription);
-        container.appendChild(imageURILabel);
-        container.appendChild(imageURI);
-        container.appendChild(submitInput)
-        container.appendChild(closeBtn);
+  //       container.appendChild(nameLabel);
+  //       container.appendChild(nameInput);
+  //       container.appendChild(shortDescriptionLabel);
+  //       container.appendChild(shortDescription);
+  //       container.appendChild(fullDescriptionLabel);
+  //       container.appendChild(fullDescription);
+  //       container.appendChild(imageURILabel);
+  //       container.appendChild(imageURI);
+  //       container.appendChild(submitInput)
+  //       container.appendChild(closeBtn);
   
-        body.appendChild(container);
+  //       body.appendChild(container);
   
-        body.addEventListener("click", function (e) {
-          if (e.target.classList.contains("close-btn")) {
-            body.removeChild(container);
-          }
-        });
-      }
-  });
+  //       body.addEventListener("click", function (e) {
+  //         if (e.target.classList.contains("close-btn")) {
+  //           body.removeChild(container);
+  //         }
+  //       });
+  //     }
+  // });
+  
 })();
