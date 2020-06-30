@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #cecece;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+
+}
+
 .main-flex-container {
     display: flex;
     justify-content: space-between;
@@ -19,8 +29,11 @@
     border: 2px solid black;
     border-radius: 20px;
     width: 300px;
+    height: 450px;
     margin: 20px;
     padding: 20px;
+    background-color: white;
+    box-shadow: 10px 5px 5px grey;
 }
 
 h2 {
@@ -30,6 +43,8 @@ h2 {
 
 img {
     margin: 15px 0;
+    height: 100px;
+
 }
 
 a {
@@ -45,12 +60,6 @@ a {
 
 .center {
     text-align: center;
-}
-
-.image {
-    width: 280px;
-    height: 200px;
-    resize: none;
 }
 
 .name {
@@ -69,9 +78,6 @@ a {
     width: 500px;
 }
 
-.image {
-    display: none;
-}
 
  label { 
      width: 80%;
@@ -89,12 +95,6 @@ input {
     padding: 20px;
     width: 80%;
 
-}
-
-.add_img { 
-    background-color: none;
-    width: 600px;
-    padding-bottom: 30px;
 }
 
 .container {

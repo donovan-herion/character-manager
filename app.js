@@ -36,10 +36,10 @@
       modification.classList.add("modification-btn");
       modification.setAttribute("data-modification", index);
 
-      let newCharacter = document.createElement("a");
-      newCharacter.innerHTML = "Create New";
-      newCharacter.classList.add("new-character-btn");
-      newCharacter.setAttribute("data-newCharacter", index);
+      let deleteCharacter = document.createElement("a");
+      deleteCharacter.innerHTML = "Delete"
+      deleteCharacter.classList.add("delete-character-btn");
+      deleteCharacter.setAttribute("data-deleteCharacter", elem.id);
 
       index++;
 
@@ -48,13 +48,15 @@
       div.appendChild(img);
       div.appendChild(moreInfo);
       div.appendChild(modification);
-      div.appendChild(newCharacter);
+      div.appendChild(deleteCharacter);
 
       let mainContainer = document.querySelector(".main-flex-container");
 
       mainContainer.appendChild(div);
     });
   }
+
+
 
   //add event listener on the parent of the dynamically created elements (won't work on dynamically created elements directly)
 
@@ -161,6 +163,81 @@
       });
     }
 
+  //Popup delete 
+
+  if (e.target.classList.contains("delete-character-btn")) {
+    
+    let confirmBox = confirm("Are you sure?");
+
+    console.log(confirmBox);
+
+
+    if(confirmBox) {
+      
+      //delete character
+      let indexFromDataDeleteCharacter = e.target.getAttribute("data-deleteCharacter");
+      deleteCharacter(indexFromDataDeleteCharacter);
+
+      }
+
+      function deleteCharacter(id) {
+
+        const characterObject = JSON.stringify({
+
+            id: id
+
+          });
+
+          let url = "https://character-database.becode.xyz/characters/" + id;
+          
+          fetch(url, {
+            method: "DELETE",
+            headers: new Headers({
+              "content-type": "application/json"
+            })
+          })
+
+          //pas indispensable
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch(err => console.error(err));
+
+          window.location.reload()
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+//*
+
+    // const deleteHero = id => {
+    //   const heroObject = JSON.stringify({
+    //     id: id
+    //   });
+  
+    //   let url = "http://localhost:3000/heroes/" + heroId;
+    //   fetch(url, {
+    //     method: "DELETE",
+    //     headers: new Headers({
+    //       "content-type": "application/json"
+    //     })
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(err => console.error(err));
+    //   console.log(heroId);
+    // };
+
+    // }
+
+  
 
   //Popup Create character
 
@@ -217,6 +294,6 @@
   //         }
   //       });
   //     }
-  // });
+  });
   
 })();
