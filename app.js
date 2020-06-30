@@ -10,8 +10,8 @@
   function displayCharacters() {
     let index = 0;
 
+    //display characters
     charactersInApi.forEach((elem) => {
-      //create html template
 
       let div = document.createElement("div");
       div.classList.add("flex-container");
@@ -62,8 +62,11 @@
 
   let main = document.querySelector(".main-flex-container");
 
+  //popup moreInfo
+  
   main.addEventListener("click", function (e) {
-    console.log(e.target);
+
+
     if (e.target.classList.contains("more-info-btn")) {
       let indexFromButtonId = e.target.getAttribute("data-moreInfo");
 
@@ -99,7 +102,7 @@
       });
     }
 
-    //modify
+    //Popup Modify
 
     if (e.target.classList.contains("modification-btn")) {
 
@@ -160,7 +163,7 @@
       });
     }
 
-    //create character
+    //Popup Create character
 
     if (e.target.classList.contains("new-character-btn")) {
 
