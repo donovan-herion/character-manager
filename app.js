@@ -179,6 +179,8 @@
       let indexFromDataDeleteCharacter = e.target.getAttribute("data-deleteCharacter");
       deleteCharacter(indexFromDataDeleteCharacter);
 
+      console.log(indexFromDataDeleteCharacter)
+
       }
 
       function deleteCharacter(id) {
@@ -203,7 +205,7 @@
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
-          window.location.reload()
+          // window.location.reload() ne valide pas la fonction si active directement... probleme a regler
       }
     }
  });
@@ -262,62 +264,56 @@
 
         submitInput.addEventListener('click', () => {
 
-          // function encodeImageFileAsURL(element) {
-          //   var file = element.files[0];
-          //   reader = new FileReader();
-          //   reader.onloadend = function() {
-          //       result = reader.result;
-          //       result1 = result.substring(23, result.length)
-          //     console.log('RESULT', result1)
-          //   }
-          //   reader.readAsDataURL(file);
-          // }
-            
-            let nameInputValue = nameInput.value;
-            let shortDescriptionValue = shortDescription.value;
-            let fullDescriptionValue = fullDescription.value
-        
-            if(nameInputValue == false || shortDescriptionValue == false || fullDescriptionValue == false){
-                alert('The form has to be completed to create a new character'); 
-            }else{
-        //         addCharact();
-        //     }
-        //     async function createCharact() {
-        //         let newCharact = {
-        //             description : newDescription,
-        //             shortDescription : newShortDescription,
-        //             name : newName,
-        //             image : result1,
-        //         }
-        //         charactArray.push(newCharact);
-        //         console.log(charactArray);
-                
-        //         return newCharact;
-        //     };
-        
-        //     async function addCharact() {
-        //         const pushCharact = await fetch("https://character-database.becode.xyz/characters", {
-        //             method: "POST",
-        //             headers: new Headers({
-        //                 "Content-Type": "application/json"
-        //             }),
-        //             body: JSON.stringify(await createCharact()),
-        //         });
-        //         return pushCharact;
-        //     };
-        // });
-        // })
-
-
-        //remove creation character page
-
-        body.addEventListener("click", function (e) {
-          if (e.target.classList.contains("close-btn")) {
-            body.removeChild(container);
+          
+          let nameInputValue = nameInput.value;
+          let shortDescriptionValue = shortDescription.value;
+          let fullDescriptionValue = fullDescription.value
+          
+          if(nameInputValue == false || shortDescriptionValue == false || fullDescriptionValue == false){
+            alert('The form has to be completed to create a new character'); 
+          } else {
+            createCharacter();
           }
-        })
-      })
-    
+          
+          async function createCharacter() {
 
-  })();
-  
+            let newCharacter = {
+              name : nameInputValue,
+              shortDescription : shortDescriptionValue,
+              description: fullDescriptionValue,
+              // image : result1,
+            }
+
+            const newCharacterInApi = await fetch("https://character-database.becode.xyz/characters", {
+              method: "POST",
+              headers: new Headers({
+                "Content-Type": "application/json"
+              }),
+              body: JSON.stringify(newCharacter),
+            });
+            return newCharacterInApi;
+          };
+        });   
+   
+      
+      
+      //remove creation character page
+      
+      body.addEventListener("click", function (e) {
+        if (e.target.classList.contains("close-btn")) {
+          body.removeChild(container);
+        }
+      })    
+  })
+})();
+
+// function encodeImageFileAsURL(element) {
+//   var file = element.files[0];
+//   reader = new FileReader();
+//   reader.onloadend = function() {
+//       result = reader.result;
+//       result1 = result.substring(23, result.length)
+//     console.log('RESULT', result1)
+//   }
+//   reader.readAsDataURL(file);
+// }
