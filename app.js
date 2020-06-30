@@ -36,10 +36,10 @@
       modification.classList.add("modification-btn");
       modification.setAttribute("data-modification", index);
 
-      let newCharacter = document.createElement("a");
-      newCharacter.innerHTML = "Create New";
-      newCharacter.classList.add("new-character-btn");
-      newCharacter.setAttribute("data-newCharacter", index);
+      let deleteCharacter = document.createElement("a");
+      deleteCharacter.innerHTML = "Delete"
+      deleteCharacter.classList.add("delete-character-btn");
+      deleteCharacter.setAttribute("data-deleteCharacter", elem.id);
 
       index++;
 
@@ -48,13 +48,16 @@
       div.appendChild(img);
       div.appendChild(moreInfo);
       div.appendChild(modification);
-      div.appendChild(newCharacter);
+      div.appendChild(deleteCharacter);
+      
 
       let mainContainer = document.querySelector(".main-flex-container");
 
       mainContainer.appendChild(div);
     });
   }
+
+
 
   //add event listener on the parent of the dynamically created elements (won't work on dynamically created elements directly)
 
@@ -161,62 +164,160 @@
       });
     }
 
+  //Popup delete 
 
-  //Popup Create character
+  if (e.target.classList.contains("delete-character-btn")) {
+    
+    let confirmBox = confirm("Are you sure?");
 
-  //   if (e.target.classList.contains("new-character-btn")) {
+    console.log(confirmBox);
 
-  //       let indexFromButtonId = e.target.getAttribute("data-newCharacter");
-  //       console.log("workeddd");
-  
-  //       let body = document.querySelector("body");
-  
-  //       let container = document.createElement("div");
-  //       container.classList.add("container");
-  
-  //       let nameLabel = document.createElement("label");
-  //       nameLabel.innerHTML = "Name of your character";
-  //       let nameInput = document.createElement("input");
-  
-  //       let shortDescriptionLabel = document.createElement("label");
-  //       shortDescriptionLabel.innerHTML = "Short description of the character";
-  //       let shortDescription = document.createElement("input");
-  
-  //       let fullDescriptionLabel = document.createElement("label");
-  //       fullDescriptionLabel.innerHTML = "Long description of the character";
-  //       let fullDescription = document.createElement("input");
-  
-  //       let imageURILabel = document.createElement("label");
-  //       imageURILabel.innerHTML = "Image Link";
-  //       let imageURI = document.createElement("input");
-  
-  //       let submitInput = document.createElement("input");
-  //       submitInput.value = "Create new character";
-  //       submitInput.setAttribute('type', 'submit')
-  
-  //       let closeBtn = document.createElement("button");
-  //       closeBtn.classList.add("close-btn");
-  //       closeBtn.innerHTML = "Close window";
-  
-  //       container.appendChild(nameLabel);
-  //       container.appendChild(nameInput);
-  //       container.appendChild(shortDescriptionLabel);
-  //       container.appendChild(shortDescription);
-  //       container.appendChild(fullDescriptionLabel);
-  //       container.appendChild(fullDescription);
-  //       container.appendChild(imageURILabel);
-  //       container.appendChild(imageURI);
-  //       container.appendChild(submitInput)
-  //       container.appendChild(closeBtn);
-  
-  //       body.appendChild(container);
-  
-  //       body.addEventListener("click", function (e) {
-  //         if (e.target.classList.contains("close-btn")) {
-  //           body.removeChild(container);
-  //         }
-  //       });
-  //     }
-  // });
 
-})();
+    if(confirmBox) {
+      
+      //delete character
+      let indexFromDataDeleteCharacter = e.target.getAttribute("data-deleteCharacter");
+      deleteCharacter(indexFromDataDeleteCharacter);
+
+      }
+
+      function deleteCharacter(id) {
+
+        const characterObject = JSON.stringify({
+
+            id: id
+
+          });
+
+          let url = "https://character-database.becode.xyz/characters/" + id;
+          
+          fetch(url, {
+            method: "DELETE",
+            headers: new Headers({
+              "content-type": "application/json"
+            })
+          })
+
+          //pas indispensable
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch(err => console.error(err));
+
+          window.location.reload()
+      }
+    }
+ });
+
+
+ // Popup Create character
+
+    // if (e.target.classList.contains("new-character-btn")) {
+      let newCharacterBtn = document.querySelector('.new-character-btn')
+      
+      newCharacterBtn.addEventListener('click', () => {
+        
+        let body = document.querySelector("body");
+        
+        let container = document.createElement("div");
+        container.classList.add("container");
+        
+        let nameLabel = document.createElement("label");
+        nameLabel.innerHTML = "Name of your character";
+        let nameInput = document.createElement("input");
+        
+        let shortDescriptionLabel = document.createElement("label");
+        shortDescriptionLabel.innerHTML = "Short description of the character";
+        let shortDescription = document.createElement("input");
+        
+        let fullDescriptionLabel = document.createElement("label");
+        fullDescriptionLabel.innerHTML = "Long description of the character";
+        let fullDescription = document.createElement("input");
+        
+        let imageURILabel = document.createElement("label");
+        imageURILabel.innerHTML = "Image Link";
+        let imageURI = document.createElement("input");
+        
+        let submitInput = document.createElement("input");
+        submitInput.value = "Create new character";
+        submitInput.setAttribute('type', 'submit')
+        
+        let closeBtn = document.createElement("button");
+        closeBtn.classList.add("close-btn");
+        closeBtn.innerHTML = "Close window";
+        
+        container.appendChild(nameLabel);
+        container.appendChild(nameInput);
+        container.appendChild(shortDescriptionLabel);
+        container.appendChild(shortDescription);
+        container.appendChild(fullDescriptionLabel);
+        container.appendChild(fullDescription);
+        container.appendChild(imageURILabel);
+        container.appendChild(imageURI);
+        container.appendChild(submitInput)
+        container.appendChild(closeBtn);
+        
+        body.appendChild(container);
+        
+        //create character for real
+
+        submitInput.addEventListener('click', () => {
+
+          // function encodeImageFileAsURL(element) {
+          //   var file = element.files[0];
+          //   reader = new FileReader();
+          //   reader.onloadend = function() {
+          //       result = reader.result;
+          //       result1 = result.substring(23, result.length)
+          //     console.log('RESULT', result1)
+          //   }
+          //   reader.readAsDataURL(file);
+          // }
+            
+            let nameInputValue = nameInput.value;
+            let shortDescriptionValue = shortDescription.value;
+            let fullDescriptionValue = fullDescription.value
+        
+            if(nameInputValue == false || shortDescriptionValue == false || fullDescriptionValue == false){
+                alert('The form has to be completed to create a new character'); 
+            }else{
+        //         addCharact();
+        //     }
+        //     async function createCharact() {
+        //         let newCharact = {
+        //             description : newDescription,
+        //             shortDescription : newShortDescription,
+        //             name : newName,
+        //             image : result1,
+        //         }
+        //         charactArray.push(newCharact);
+        //         console.log(charactArray);
+                
+        //         return newCharact;
+        //     };
+        
+        //     async function addCharact() {
+        //         const pushCharact = await fetch("https://character-database.becode.xyz/characters", {
+        //             method: "POST",
+        //             headers: new Headers({
+        //                 "Content-Type": "application/json"
+        //             }),
+        //             body: JSON.stringify(await createCharact()),
+        //         });
+        //         return pushCharact;
+        //     };
+        // });
+        // })
+
+
+        //remove creation character page
+
+        body.addEventListener("click", function (e) {
+          if (e.target.classList.contains("close-btn")) {
+            body.removeChild(container);
+          }
+        })
+      })
+    
+
+  })();
+  
