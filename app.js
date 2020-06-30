@@ -19,6 +19,14 @@
       let h2 = document.createElement("h2");
       h2.innerHTML = elem.name;
 
+      let cancelButtonDiv = document.createElement("div");
+      cancelButtonDiv.classList.add("cancelButtonDiv");
+
+      let deleteCharacter = document.createElement("a");
+      deleteCharacter.innerHTML = "<img src='assets/image/cancel.png'>"
+      deleteCharacter.classList.add("delete-character-btn");
+      deleteCharacter.setAttribute("data-deleteCharacter", elem.id);
+
       let p = document.createElement("p");
       p.classList.add("center");
       p.innerHTML = elem.shortDescription;
@@ -26,30 +34,34 @@
       let img = document.createElement("img");
       img.src = `data:image/jpeg;base64,${elem.image}`;
 
+      //Création d'une div afin de placer les boutons côte à côte 
+      let buttonGroupDiv = document.createElement("div");
+      buttonGroupDiv.classList.add("buttonGroupDiv");
+
       let moreInfo = document.createElement("a");
-      moreInfo.innerHTML = "More Info";
+      moreInfo.innerHTML = "<img src='assets/image/icons8-info-256.png'>";
       moreInfo.classList.add("more-info-btn");
       moreInfo.setAttribute("data-moreInfo", index);
 
       let modification = document.createElement("a");
-      modification.innerHTML = "Modify";
+      modification.innerHTML = "<img src='assets/image/icons8-modifier-160.png'>";
       modification.classList.add("modification-btn");
       modification.setAttribute("data-modification", index);
 
-      let deleteCharacter = document.createElement("a");
-      deleteCharacter.innerHTML = "Delete"
-      deleteCharacter.classList.add("delete-character-btn");
-      deleteCharacter.setAttribute("data-deleteCharacter", elem.id);
+      
 
       index++;
 
+      div.appendChild(cancelButtonDiv);
+      cancelButtonDiv.appendChild(deleteCharacter);
       div.appendChild(h2);
       div.appendChild(p);
       div.appendChild(img);
-      div.appendChild(moreInfo);
-      div.appendChild(modification);
-      div.appendChild(deleteCharacter);
-      
+      div.appendChild(buttonGroupDiv);
+      //Insertion des boutons au sein de la Div, reliée au container
+      buttonGroupDiv.appendChild(moreInfo);
+      buttonGroupDiv.appendChild(modification);
+
 
       let mainContainer = document.querySelector(".main-flex-container");
 
