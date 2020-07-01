@@ -72,6 +72,14 @@ a {
     border-top-left-radius: 20px;
 } */
 
+a.delete-character-btn {
+    display: block;
+    width: 40px;
+    border-top-left-radius: 20px;
+    right: 0;
+    background-color: black;
+}
+
 a.delete-character-btn img {
     width: 30px;
     border-top-left-radius: 20px;
