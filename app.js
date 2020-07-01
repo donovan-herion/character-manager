@@ -147,10 +147,9 @@
       let imageURI = document.createElement("input");
       imageURI.value = charactersInApi[indexFromButtonId].image; // we should probably parse it or do something so that it works
 
-   
-      let submitInput = document.createElement("input");
-      submitInput.value = "Modify character";
-      submitInput.setAttribute('type', 'submit')
+      let modifyInput = document.createElement("input");
+      modifyInput.value = "Modify character";
+      modifyInput.setAttribute('type', 'submit')
 
       let closeBtn = document.createElement("button");
       closeBtn.classList.add("close-btn");
@@ -164,10 +163,49 @@
       container.appendChild(fullDescription);
       container.appendChild(imageURILabel);
       container.appendChild(imageURI);
-      container.appendChild(submitInput)
+      container.appendChild(modifyInput)
       container.appendChild(closeBtn);
 
       body.appendChild(container);
+
+
+
+      modifyInput.addEventListener('click', () => {
+
+          
+        let nameInputValue = nameInput.value;
+        let shortDescriptionValue = shortDescription.value;
+        let fullDescriptionValue = fullDescription.value
+        
+        let confirmBox = confirm('Are you sure ?')
+
+        if (confirmBox) { modifyCharacter(); }
+        
+        
+        async function modifyCharacter() {
+
+          let modifiedCharacter = {
+            name : nameInputValue,
+            shortDescription : shortDescriptionValue,
+            description: fullDescriptionValue,
+            // image : result1,
+          }
+
+          const modifiedCharacterInApi = await fetch("https://character-database.becode.xyz/characters", {
+            method: "POST",
+            headers: new Headers({
+              "Content-Type": "application/json"
+            }),
+            body: JSON.stringify(modifiedCharacter),
+          })
+            
+          window.location.reload();
+          
+          return modifiedCharacterInApi;
+        };
+      });   
+ 
+
 
       body.addEventListener("click", function (e) {
         if (e.target.classList.contains("close-btn")) {
@@ -195,7 +233,7 @@
 
       }
 
-      function deleteCharacter(id) {
+      async function deleteCharacter(id) {
 
         const characterObject = JSON.stringify({
 
@@ -205,7 +243,7 @@
 
           let url = "https://character-database.becode.xyz/characters/" + id;
           
-          fetch(url, {
+          await fetch(url, {
             method: "DELETE",
             headers: new Headers({
               "content-type": "application/json"
@@ -217,7 +255,7 @@
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
-          // window.location.reload() ne valide pas la fonction si active directement... probleme a regler
+          window.location.reload() 
       }
     }
  });
@@ -302,7 +340,10 @@
                 "Content-Type": "application/json"
               }),
               body: JSON.stringify(newCharacter),
-            });
+            })
+            
+            window.location.reload();
+
             return newCharacterInApi;
           };
         });   
