@@ -47,6 +47,7 @@
       modification.innerHTML = "<img src='assets/image/icons8-modifier-160.png'>";
       modification.classList.add("modification-btn");
       modification.setAttribute("data-modification", index);
+      modification.setAttribute("data-modification-id", elem.id);
 
       
 
@@ -173,36 +174,55 @@
       modifyInput.addEventListener('click', () => {
 
           
-        let nameInputValue = nameInput.value;
-        let shortDescriptionValue = shortDescription.value;
-        let fullDescriptionValue = fullDescription.value
-        
-        let confirmBox = confirm('Are you sure ?')
+        let confirmBox = confirm("Are you willing to modify this item ?");
 
-        if (confirmBox) { modifyCharacter(); }
-        
-        
-        async function modifyCharacter() {
-
-          let modifiedCharacter = {
-            name : nameInputValue,
-            shortDescription : shortDescriptionValue,
-            description: fullDescriptionValue,
-            // image : result1,
-          }
-
-          const modifiedCharacterInApi = await fetch("https://character-database.becode.xyz/characters", {
-            method: "POST",
-            headers: new Headers({
-              "Content-Type": "application/json"
-            }),
-            body: JSON.stringify(modifiedCharacter),
-          })
-            
-          window.location.reload();
+        console.log(confirmBox);
+    
+    
+        if(confirmBox) {
           
-          return modifiedCharacterInApi;
-        };
+          //modify character
+          let idFromDataModifyCharacter = e.target.getAttribute("data-modification-id");
+          modifyCharacter(idFromDataModifyCharacter);
+    
+          console.log(idFromDataModifyCharacter)
+    
+          }
+    
+          async function modifyCharacter(id) {
+    
+              let url = "https://character-database.becode.xyz/characters/" + id;
+
+              let nameInputValue = nameInput.value;
+              let shortDescriptionValue = shortDescription.value;
+              let fullDescriptionValue = fullDescription.value
+       
+              // let modifiedCharacter = {
+                    
+              //       // image : result1,
+              //     }
+                  
+              
+              await fetch(url, {
+                method: "PUT",
+                headers: new Headers({
+                  "Content-type": "application/json; charset=UTF-8"
+                }),
+                body: JSON.stringify({
+                  name : nameInputValue,
+                  shortDescription : shortDescriptionValue,
+                  description: fullDescriptionValue
+                })
+              })
+
+    
+              //pas indispensable
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(err => console.error(err));
+    
+              window.location.reload() 
+            }
       });   
  
 
@@ -234,12 +254,6 @@
       }
 
       async function deleteCharacter(id) {
-
-        const characterObject = JSON.stringify({
-
-            id: id
-
-          });
 
           let url = "https://character-database.becode.xyz/characters/" + id;
           
