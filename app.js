@@ -249,6 +249,8 @@
 
       modifyInput.addEventListener('click', () => {
 
+        
+
           
         let confirmBox = confirm("Are you willing to modify this item ?");
 
@@ -394,16 +396,7 @@
       imageURI.classList.add("imageURI");
       imageURI.setAttribute('type', 'file')
 
-<<<<<<< HEAD
-      // let imageURIRedirect = document.createElement("img");
-      // imageURIRedirect.classList.add("imageURIRedirect");
-      // imageURI.setAttribute('src', 'assets/image/avatar.png') ca fout le border
-=======
-      let imageURIRedirect = document.createElement("img");
-      imageURIRedirect.classList.add("imageURIRedirect");
-      imageURIRedirect.setAttribute('src', 'assets/image/avatar.png')
- // we should probably parse it or do something so that it works
->>>>>>> 84a80e03b861332893992076db98054a62fef3ac
+
 
       let submitInputModifyDiv = document.createElement("div");
       submitInputModifyDiv.classList.add("submit-input-modify-div");
@@ -430,11 +423,7 @@
         leftContainer.appendChild(fullDescription);
         rightContainer.appendChild(imageURILabel);
         rightContainer.appendChild(imageURI);
-<<<<<<< HEAD
-        // imageURI.appendChild(imageURIRedirect); fout le bordel
-=======
-        imageURILabel.appendChild(imageURIRedirect);
->>>>>>> 84a80e03b861332893992076db98054a62fef3ac
+
         rightContainer.appendChild(submitInputModifyDiv);
         submitInputModifyDiv.appendChild(submitInput)
         container.appendChild(closeBtn);
