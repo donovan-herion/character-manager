@@ -224,9 +224,9 @@
       modifyInput.value = "Modify character";
       modifyInput.setAttribute('type', 'submit')
 
-      let closeBtn = document.createElement("button");
-      closeBtn.classList.add("close-btn");
-      closeBtn.innerHTML = "Close window";
+      // let closeBtn = document.createElement("button");
+      // closeBtn.classList.add("close-btn");
+      // closeBtn.innerHTML = "Close window";
 
       container.appendChild(nameLabel);
       container.appendChild(nameInput);
