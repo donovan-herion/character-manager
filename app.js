@@ -118,6 +118,7 @@
 
     //Popup Modify
 
+    
     if (e.target.classList.contains("modification-btn")) {
 
       let indexFromButtonId = e.target.getAttribute("data-modification");
@@ -224,7 +225,6 @@
               window.location.reload() 
             }
       });   
- 
 
 
       body.addEventListener("click", function (e) {
@@ -302,6 +302,7 @@
         let imageURILabel = document.createElement("label");
         imageURILabel.innerHTML = "Image Link";
         let imageURI = document.createElement("input");
+        imageURI.setAttribute ('type', 'file')
         
         let submitInput = document.createElement("input");
         submitInput.value = "Create new character";
