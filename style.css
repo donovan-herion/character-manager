@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'avengeance_heroic_avengerbold';
+    src: url('assets/image/font/avengeance_heroic_avenger_bd-webfont.woff2') format('woff2'),
+         url('assets/image/font/avengeance_heroic_avenger_bd-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,13 +13,13 @@
 }
 
 body {
-    background-color: #cecece;
+    background-color: #e2dea9;
 }
 
 h1 {
     text-align: center;
     font-size: 50px;
-
+    font-family: 'avengeance_heroic_avengerbold';
 }
 
 .main-flex-container {
@@ -20,6 +28,20 @@ h1 {
     flex-wrap: wrap;
     margin: 20vh auto;
     width: 70%;
+}
+
+.createContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 300px;
+    height: 450px;
+    margin: 20px;
+    /*padding: 20px;*/
+    background-color: white;
+    box-shadow: 10px 5px 5px grey;
 }
 
 .flex-container {
@@ -42,12 +64,13 @@ h2 {
     margin: 10px 0;
 }
 
+.imgDiv {
+    text-align: center;
+    
+}
 
 img {
     margin: 15px 0;
-    height: auto;
-    width: 100px;
-    display: block;
     border-radius: 50%;
 }
 
@@ -61,29 +84,31 @@ a {
 }
 
 .cancelButtonDiv {
-    background-color: #ee3f4b;
+    background-color: black;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: 60px;
 }
 
 
-/* a.delete-character-btn img {
-    width: 30px;
-    border-top-left-radius: 20px;
-} */
 
 a.delete-character-btn {
     display: block;
-    width: 40px;
     border-top-left-radius: 20px;
-    right: 0;
-    background-color: black;
+    border-top-right-radius: 20px;
+    height: 60px;
+    background-color: #f14753;
+    border-bottom: 1px solid black;
 }
 
 a.delete-character-btn img {
     width: 30px;
     border-top-left-radius: 20px;
-    right: 0;
+    position: absolute;
+    right: 15px;
+    top: -5px;
 }
 
 .buttonGroupDiv {
@@ -130,12 +155,118 @@ a.modification-btn img {
     width: 500px;
     border-top-left-radius: 3%;
 }
-
-.shortDescription {
-    height: 250px;
-    width: 500px;
+.container {
+    width: 80%;
+    height: 80vh;
+    background-color: rgb(228, 199, 119);
+    position: fixed;
+    left: 10%;
+    top: 10vh;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 1%;
+    position: relative;
+}
+.submit-input-modify-div {
+    bottom: 5%;
+    position: absolute;
+    right: 35%;
+    width: 30%;
+    height: 8%;
+}
+
+.submit-input-modify {
+    background-color: greenyellow;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px;
+
+}
+
+.submit-input-modify:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.close-btn-modify-div {
+    width: 100%;
+    height: 8%;
+    bottom: 0;
+    position: absolute;
+    bottom: 0px;
+    right: 1px;
+    border-bottom-left-radius: 20px;
+}
+
+.close-btn-modify {
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    background-color: #f14753;
+    font-size: 50px;
+    color: white;
+}
+
+.close-btn-modify:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.leftContainer { 
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border-left: 1px solid black;
+    padding: 1%;
+}
+
+.leftContainer label {
+    margin-bottom: 20px;
+    padding-left: 2%;
+}
+
+
+.nameInput {
+    width: 95%;
+    margin-left: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.shortDescription {
+    height: 20%;
+    width: 95%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding-bottom: 100px;
+    padding: 20px;
+    resize: none;
+    text-align: justify;
+}
+
+.fullDescription {
+    height: 40%;
+    width: 95%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    padding: 20px;
+    resize: none;
+    text-align: justify;
+}
 .description {
     height: 450px;
     width: 500px;
@@ -157,21 +288,79 @@ label:hover {
 input {
     padding: 20px;
     width: 80%;
-
 }
+/*///////////////////////INFO////////////////////*/
 
-.container {
+.container-info {
     width: 80%;
     height: 80vh;
-    padding: 5vh 0;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(228, 199, 119);
     position: fixed;
     left: 10%;
     top: 10vh;
     border-radius: 40px;
+}
+.image-div-info {
+    text-align: center;
+    padding-bottom: 3%;
+}
+.image-info {
+    width: 15%;
+}
+.name-info{
+    padding-top: 1%;
+    font-size: 60px;
+}
+.full-description-div {
+    width: 70%;
+    height: 40%;
+    position: relative;
+    padding-top: 3%;
+    left: 15%;
+    background-color: whitesmoke;
+    border-radius: 40px;
+    text-align: justify;
+}
+.full-description {
+    width: 90%;
+    position: absolute;
+    font-size: 20px;
+    left: 5%;
+}
+.close-btn {
+    position: absolute;
+}
+.close-btn-info-div {
+    position: relative;
+}
+.close-btn-info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    width: 6%;
+    height: 9%;
+    right: 0;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background-color: #e92c3b;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+/*//////////////////////////////////////////CREATE/////////////////////////////////*/
+.close-btn {
+    position: absolute;
+}
+.close-btn-create-div {
+    position: relative;
+}
+.close-btn-create {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    width: 6%;
+    height: 9%;
+    right: 0;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background-color: #e92c3b;
+    border-color: #e92c3b;
 }
