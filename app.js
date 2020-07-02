@@ -249,6 +249,8 @@
 
       modifyInput.addEventListener('click', () => {
 
+        
+
           
         let confirmBox = confirm("Are you willing to modify this item ?");
 
@@ -273,10 +275,12 @@
               let shortDescriptionValue = shortDescription.value;
               let fullDescriptionValue = fullDescription.value
        
-              // let modifiedCharacter = {
-                    
-              //       // image : result1,
-              //     }
+               let modifiedCharacter = {
+                name : nameInputValue,
+                shortDescription : shortDescriptionValue,
+                description: fullDescriptionValue
+                // image : result1,
+               }
                   
               
               await fetch(url, {
@@ -284,11 +288,9 @@
                 headers: new Headers({
                   "Content-type": "application/json; charset=UTF-8"
                 }),
-                body: JSON.stringify({
-                  name : nameInputValue,
-                  shortDescription : shortDescriptionValue,
-                  description: fullDescriptionValue
-                })
+                body: JSON.stringify(
+                modifiedCharacter  
+                )
               })
 
     
@@ -394,10 +396,7 @@
       imageURI.classList.add("imageURI");
       imageURI.setAttribute('type', 'file')
 
-      let imageURIRedirect = document.createElement("img");
-      imageURIRedirect.classList.add("imageURIRedirect");
-      imageURIRedirect.setAttribute('src', 'assets/image/avatar.png')
- // we should probably parse it or do something so that it works
+
 
       let submitInputModifyDiv = document.createElement("div");
       submitInputModifyDiv.classList.add("submit-input-modify-div");
@@ -424,15 +423,43 @@
         leftContainer.appendChild(fullDescription);
         rightContainer.appendChild(imageURILabel);
         rightContainer.appendChild(imageURI);
-        imageURILabel.appendChild(imageURIRedirect);
+
         rightContainer.appendChild(submitInputModifyDiv);
         submitInputModifyDiv.appendChild(submitInput)
         container.appendChild(closeBtn);
         closeBtn.appendChild(closeBtnModifyDiv);
+        
 
         body.appendChild(container);
+
         
-        //create character for real
+        let imagePreviewElement = document.createElement('img')
+        imagePreviewElement.id = 'image-preview'
+        imagePreviewElement.src = 'wireframe-character-project.png'
+        body.prepend(imagePreviewElement) // on liasse la avec la creation de popup
+
+        
+        document.querySelector(".imageURI").addEventListener("change", () => {
+          
+              console.log('je viens de changer')
+
+              const reader = new FileReader();
+
+              let imageSelectorInput = document.querySelector(".imageURI").files[0];
+              let imageSelector = document.querySelector(".imageURI");
+
+              reader.readAsDataURL(imageSelectorInput);// load l image base 64
+
+              reader.addEventListener('load', (event) => {
+
+
+                let imagePreviewElement = document.getElementById("image-preview");
+                imagePreviewElement.src = event.target.result;
+                
+                const imgPreview = document.getElementById("image-preview").src;
+                const imageInput = imgPreview.substring(23, imgPreview.length);
+                
+            
 
 
         submitInputModifyDiv.addEventListener('click', () => {
@@ -440,8 +467,12 @@
           
           let nameInputValue = nameInput.value;
           let shortDescriptionValue = shortDescription.value;
-          let fullDescriptionValue = fullDescription.value
+          let fullDescriptionValue = fullDescription.value;
           
+          
+
+
+
           if(nameInputValue == false || shortDescriptionValue == false || fullDescriptionValue == false){
             alert('The form has to be completed to create a new character'); 
           } else {
@@ -454,7 +485,7 @@
               name : nameInputValue,
               shortDescription : shortDescriptionValue,
               description: fullDescriptionValue,
-              // image : result1,
+              image : imageInput
             }
 
             const newCharacterInApi = await fetch("https://character-database.becode.xyz/characters", {
@@ -481,15 +512,7 @@
         }
       })    
   })
+});       
+})
 })();
 
-// function encodeImageFileAsURL(element) {
-//   var file = element.files[0];
-//   reader = new FileReader();
-//   reader.onloadend = function() {
-//       result = reader.result;
-//       result1 = result.substring(23, result.length)
-//     console.log('RESULT', result1)
-//   }
-//   reader.readAsDataURL(file);
-// }
