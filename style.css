@@ -17,9 +17,17 @@ body {
 }
 
 h1 {
+    padding-top: 3%;
     text-align: center;
-    font-size: 50px;
     font-family: 'avengeance_heroic_avengerbold';
+    color: white;
+    line-height: 45px;
+}
+.h1-first-part {
+    font-size: 100px;
+}
+.h1-second-part {
+    font-size: 50px;
 }
 
 .main-flex-container {
@@ -303,9 +311,11 @@ input {
 .image-div-info {
     text-align: center;
     padding-bottom: 3%;
+    border-radius: none;
 }
 .image-info {
     width: 15%;
+    border-radius: 0;
 }
 .name-info{
     padding-top: 1%;
