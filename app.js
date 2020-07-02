@@ -142,6 +142,7 @@
 
     //Popup Modify
 
+    
     if (e.target.classList.contains("modification-btn")) {
 
       let indexFromButtonId = e.target.getAttribute("data-modification");
@@ -297,7 +298,6 @@
               window.location.reload() 
             }
       });   
- 
 
 
       body.addEventListener("click", function (e) {
