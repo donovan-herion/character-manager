@@ -203,7 +203,7 @@
       // closeBtn.innerHTML = "Cancel";
 
       let closeBtn = document.createElement("a");
-      closeBtn.classList.add("close-btn-info");
+      closeBtn.classList.add("close-btn-create");
       closeBtn.innerHTML = "<img src='assets/image/cancel.png'>";
 
       let closeBtnModifyDiv = document.createElement("div");
@@ -224,22 +224,24 @@
       let modifyInput = document.createElement("input");
       modifyInput.value = "Modify character";
       modifyInput.setAttribute('type', 'submit')
+      container.appendChild(closeBtn);
+      closeBtn.appendChild(closeBtnModifyDiv);
 
       // let closeBtn = document.createElement("button");
       // closeBtn.classList.add("close-btn");
       // closeBtn.innerHTML = "Close window";
 
-      container.appendChild(nameLabel);
-      container.appendChild(nameInput);
-      container.appendChild(shortDescriptionLabel);
-      container.appendChild(shortDescription);
-      container.appendChild(fullDescriptionLabel);
-      container.appendChild(fullDescription);
-      container.appendChild(imageURILabel);
-      container.appendChild(imageURI);
-      container.appendChild(modifyInput)
-      container.appendChild(closeBtn);
-      closeBtn.appendChild(closeBtnModifyDiv);
+      // container.appendChild(nameLabel);
+      // container.appendChild(nameInput);
+      // container.appendChild(shortDescriptionLabel);
+      // container.appendChild(shortDescription);
+      // container.appendChild(fullDescriptionLabel);
+      // container.appendChild(fullDescription);
+      // container.appendChild(imageURILabel);
+      // container.appendChild(imageURI);
+      // container.appendChild(modifyInput)
+      // container.appendChild(closeBtn);
+      // closeBtn.appendChild(closeBtnModifyDiv);
 
       body.appendChild(container);
 
@@ -301,7 +303,7 @@
 
 
       body.addEventListener("click", function (e) {
-        if (e.target.classList.contains("close-btn-info")) {
+        if (e.target.classList.contains("close-btn-create")) {
           body.removeChild(container);
         }
       });
@@ -351,7 +353,7 @@
  // Popup Create character
 
     // if (e.target.classList.contains("new-character-btn")) {
-      let newCharacterBtn = document.querySelector('.new-character-btn')
+      let newCharacterBtn = document.querySelector('.container-add')
       
       newCharacterBtn.addEventListener('click', () => {
         
@@ -385,14 +387,23 @@
       rightContainer.classList.add("rightContainer");
 
       let imageURILabel = document.createElement("label");
-      imageURILabel.innerHTML = "Image Link";
+      // imageURILabel.innerHTML = "Image Link";
+      imageURILabel.classList.add("imageURILabel");     
+  
       let imageURI = document.createElement("input");
       imageURI.classList.add("imageURI");
       imageURI.setAttribute('type', 'file')
 
+<<<<<<< HEAD
       // let imageURIRedirect = document.createElement("img");
       // imageURIRedirect.classList.add("imageURIRedirect");
       // imageURI.setAttribute('src', 'assets/image/avatar.png') ca fout le border
+=======
+      let imageURIRedirect = document.createElement("img");
+      imageURIRedirect.classList.add("imageURIRedirect");
+      imageURIRedirect.setAttribute('src', 'assets/image/avatar.png')
+ // we should probably parse it or do something so that it works
+>>>>>>> 84a80e03b861332893992076db98054a62fef3ac
 
       let submitInputModifyDiv = document.createElement("div");
       submitInputModifyDiv.classList.add("submit-input-modify-div");
@@ -419,7 +430,11 @@
         leftContainer.appendChild(fullDescription);
         rightContainer.appendChild(imageURILabel);
         rightContainer.appendChild(imageURI);
+<<<<<<< HEAD
         // imageURI.appendChild(imageURIRedirect); fout le bordel
+=======
+        imageURILabel.appendChild(imageURIRedirect);
+>>>>>>> 84a80e03b861332893992076db98054a62fef3ac
         rightContainer.appendChild(submitInputModifyDiv);
         submitInputModifyDiv.appendChild(submitInput)
         container.appendChild(closeBtn);
@@ -456,6 +471,12 @@
                 const imageInput = imgPreview.substring(23, imgPreview.length);
                 
             
+
+        imageURILabel.addEventListener('click', () => {
+
+          imageURI;
+
+        })
 
         submitInputModifyDiv.addEventListener('click', () => {
 
