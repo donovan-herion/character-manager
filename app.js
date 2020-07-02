@@ -361,30 +361,6 @@
         container.classList.add("container");
         
         
-<<<<<<< HEAD
-        let imageURILabel = document.createElement("label");
-        imageURILabel.innerHTML = "Image Link";
-        let imageURI = document.createElement("input");
-        imageURI.setAttribute ('type', 'file')
-        
-        let submitInput = document.createElement("input");
-        submitInput.value = "Create new character";
-        submitInput.setAttribute('type', 'submit')
-        
-        let closeBtn = document.createElement("button");
-        closeBtn.classList.add("close-btn");
-        closeBtn.innerHTML = "Close window";
-        
-        container.appendChild(nameLabel);
-        container.appendChild(nameInput);
-        container.appendChild(shortDescriptionLabel);
-        container.appendChild(shortDescription);
-        container.appendChild(fullDescriptionLabel);
-        container.appendChild(fullDescription);
-        container.appendChild(imageURILabel);
-        container.appendChild(imageURI);
-        container.appendChild(submitInput)
-=======
         let leftContainer = document.createElement("div");
       leftContainer.classList.add("leftContainer");
 
@@ -447,7 +423,6 @@
         imageURI.appendChild(imageURIRedirect);
         rightContainer.appendChild(submitInputModifyDiv);
         submitInputModifyDiv.appendChild(submitInput)
->>>>>>> 2e06aee9f856991af727285589b5d71b7125e674
         container.appendChild(closeBtn);
         closeBtn.appendChild(closeBtnModifyDiv);
 
