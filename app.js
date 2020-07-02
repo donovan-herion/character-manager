@@ -434,11 +434,6 @@
         
         //create character for real
 
-        imageURILabel.addEventListener('click', () => {
-
-          imageURI;
-
-        })
 
         submitInputModifyDiv.addEventListener('click', () => {
 
