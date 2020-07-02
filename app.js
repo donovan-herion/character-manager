@@ -52,6 +52,7 @@
       modification.innerHTML = "<img src='assets/image/icons8-modifier-160.png'>";
       modification.classList.add("modification-btn");
       modification.setAttribute("data-modification", index);
+      modification.setAttribute("data-modification-id", elem.id);
 
       
 
@@ -219,10 +220,85 @@
       rightContainer.appendChild(imageURI);
       rightContainer.appendChild(submitInputModifyDiv);
       submitInputModifyDiv.appendChild(submitInput)
+      let modifyInput = document.createElement("input");
+      modifyInput.value = "Modify character";
+      modifyInput.setAttribute('type', 'submit')
+
+      let closeBtn = document.createElement("button");
+      closeBtn.classList.add("close-btn");
+      closeBtn.innerHTML = "Close window";
+
+      container.appendChild(nameLabel);
+      container.appendChild(nameInput);
+      container.appendChild(shortDescriptionLabel);
+      container.appendChild(shortDescription);
+      container.appendChild(fullDescriptionLabel);
+      container.appendChild(fullDescription);
+      container.appendChild(imageURILabel);
+      container.appendChild(imageURI);
+      container.appendChild(modifyInput)
       container.appendChild(closeBtn);
       closeBtn.appendChild(closeBtnModifyDiv);
 
       body.appendChild(container);
+
+
+
+      modifyInput.addEventListener('click', () => {
+
+          
+        let confirmBox = confirm("Are you willing to modify this item ?");
+
+        console.log(confirmBox);
+    
+    
+        if(confirmBox) {
+          
+          //modify character
+          let idFromDataModifyCharacter = e.target.getAttribute("data-modification-id");
+          modifyCharacter(idFromDataModifyCharacter);
+    
+          console.log(idFromDataModifyCharacter)
+    
+          }
+    
+          async function modifyCharacter(id) {
+    
+              let url = "https://character-database.becode.xyz/characters/" + id;
+
+              let nameInputValue = nameInput.value;
+              let shortDescriptionValue = shortDescription.value;
+              let fullDescriptionValue = fullDescription.value
+       
+              // let modifiedCharacter = {
+                    
+              //       // image : result1,
+              //     }
+                  
+              
+              await fetch(url, {
+                method: "PUT",
+                headers: new Headers({
+                  "Content-type": "application/json; charset=UTF-8"
+                }),
+                body: JSON.stringify({
+                  name : nameInputValue,
+                  shortDescription : shortDescriptionValue,
+                  description: fullDescriptionValue
+                })
+              })
+
+    
+              //pas indispensable
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(err => console.error(err));
+    
+              window.location.reload() 
+            }
+      });   
+ 
+
 
       body.addEventListener("click", function (e) {
         if (e.target.classList.contains("close-btn-info")) {
@@ -250,17 +326,11 @@
 
       }
 
-      function deleteCharacter(id) {
-
-        const characterObject = JSON.stringify({
-
-            id: id
-
-          });
+      async function deleteCharacter(id) {
 
           let url = "https://character-database.becode.xyz/characters/" + id;
           
-          fetch(url, {
+          await fetch(url, {
             method: "DELETE",
             headers: new Headers({
               "content-type": "application/json"
@@ -272,7 +342,7 @@
           .then(data => console.log(data))
           .catch(err => console.error(err));
 
-          // window.location.reload() ne valide pas la fonction si active directement... probleme a regler
+          window.location.reload() 
       }
     }
  });
@@ -388,7 +458,10 @@
                 "Content-Type": "application/json"
               }),
               body: JSON.stringify(newCharacter),
-            });
+            })
+            
+            window.location.reload();
+
             return newCharacterInApi;
           };
         });   
