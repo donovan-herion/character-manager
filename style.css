@@ -23,7 +23,7 @@ h1 {
     color: white;
     line-height: 45px;
     height: 350px;
-    background-image: url(/assets/image/wallpaper-title.jpg);
+    background-image: url(assets/image/wallpaper-title.jpg);
     background-position-y: -140px;
 }
 .h1-first-part {
