@@ -292,8 +292,8 @@
 
       body.addEventListener("click", function (e) {
         if (e.target.classList.contains("close-btn-info")) {
-          container.removeChild(rightContainer);
-          container.removeChild(leftContainer);
+          body.removeChild(container)
+          
         }
       });
     }
