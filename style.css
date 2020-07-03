@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #e2dea9;
+    background-color: #1a1a1a;
 }
 
 h1 {
@@ -67,7 +67,7 @@ h1 {
     margin: 20px;
     /*padding: 20px;*/
     background-color: white;
-    box-shadow: 10px 5px 5px grey;
+    box-shadow: 10px 5px 5px black;
     
 }
 .flex-container:hover {
@@ -75,6 +75,7 @@ h1 {
     cursor: pointer;
     width: 325px;
     height: 487.5px;
+    box-shadow: 15px 7.5px 7.5px black;
     transition-duration: 0.3s;
 }
 
@@ -86,6 +87,7 @@ h1 {
     cursor: pointer;
     width: 325px;
     height: 487.5px;
+    box-shadow: 15px 7.5px 7.5px black;
     transition-duration: 0.3s;
 }
 
@@ -99,8 +101,8 @@ h1 {
     height: 130px;
     filter: invert(100%);
 }
-.add-img:hover {
-    transition-duration: 0.4s;
+.container-add:hover img {
+    transition-duration: 0.5s;
     transform: rotate(180deg);
 }
 h2 {
@@ -113,7 +115,9 @@ h2 {
 
 .imgDiv {
     text-align: center;
+}
 
+.imgDiv:hover img {
 }
 
 img {
@@ -158,7 +162,7 @@ a.delete-character-btn img {
     top: -5px;
 }
 
-a.delete-character-btn img:hover {
+a.delete-character-btn:hover img {
     transition-duration: 0.4s;
     transform: rotate(180deg);
 }
@@ -190,6 +194,7 @@ a.more-info-btn img {
     left: 15px;
     top: -5px;
 }
+
 a.modification-btn {
     width: 50%;
     border-bottom-right-radius: 20px;
@@ -206,6 +211,7 @@ a.modification-btn img {
     right: 15px;
     top: -5px;
 }
+
 .center {
     text-align: center;
 }
@@ -214,7 +220,6 @@ a.modification-btn img {
     height: 50px;
     width: 500px;
     border-top-left-radius: 3%;
-    
 }
 .container {
     width: 80%;
@@ -235,6 +240,12 @@ a.modification-btn img {
     width: 50%;
     padding: 1%;
     position: relative;
+    background-color: #e4e4e4;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+.rightContainer label {
+    font-family: 'avengeance_heroic_avengerbold';
 }
 .submit-input-modify-div {
     bottom: 5%;
@@ -245,18 +256,26 @@ a.modification-btn img {
 }
 
 .submit-input-modify {
-    background-color: greenyellow;
+    border-color: rgb(145, 223, 29);
     width: 100%;
     height: 100%;
-    font-size: 100%;
-    color: white;
+    font-size: 150%;
     border-radius: 10px;
-
+    color: white;
+    background-color: rgb(145, 223, 29);
+    font-family: 'avengeance_heroic_avengerbold';
+    box-shadow: 4px 4px 5px grey;
 }
 
 .submit-input-modify:hover {
     cursor: pointer;
     opacity: 90%;
+    color: rgb(145, 223, 29);
+    background-color: white;
+}
+.submit-input-modify:hover {
+    box-shadow: none;
+    transition-duration: 0.3s;
 }
 
 .close-btn-modify-div {
@@ -281,7 +300,6 @@ a.modification-btn img {
 .close-btn-modify:hover {
     cursor: pointer;
     opacity: 90%;
-    box-shadow: ;
 }
 
 .leftContainer { 
@@ -290,11 +308,15 @@ a.modification-btn img {
     width: 50%;
     border-left: 1px solid black;
     padding: 1%;
+    background-color: #2c2c2c;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 .leftContainer label {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     padding-left: 2%;
+    font-family: 'avengeance_heroic_avengerbold';
 }
 
 
@@ -303,9 +325,11 @@ a.modification-btn img {
     margin-left: 10px;
     text-align: center;
     margin-bottom: 20px;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: bold;
+    font-family: 'avengeance_heroic_avengerbold';
 }
+
 
 .shortDescription {
     height: 20%;
@@ -317,6 +341,7 @@ a.modification-btn img {
     padding: 20px;
     resize: none;
     text-align: justify;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .fullDescription {
@@ -343,7 +368,9 @@ a.modification-btn img {
      font-size: 2em;
      font-weight: bold;
  }
-
+.imageURILabel {
+    color: #2c2c2c;
+}
 label:hover {
     cursor: pointer;
 }
@@ -357,7 +384,7 @@ input {
 .container-info {
     width: 80%;
     height: 80vh;
-    background-color: rgb(228, 199, 119);
+    background: linear-gradient(#e4e4e4 33%, #2c2c2c 33%);
     position: fixed;
     left: 10%;
     top: 10vh;
@@ -409,6 +436,10 @@ input {
     border-bottom-left-radius: 40px;
     background-color: #e92c3b;
 }
+.close-btn-info:hover img {
+    transition-duration: 0.4s;
+    transform: rotate(180deg);
+}
 
 /*//////////////////////////////////////////CREATE/////////////////////////////////*/
 .close-btn {
@@ -428,8 +459,9 @@ input {
     border-bottom-left-radius: 40px;
     background-color: #e92c3b;
     border-color: #e92c3b;
+    cursor: pointer;
 }
-.close-btn-create img:hover {
+.close-btn-create:hover img {
     transition-duration: 0.4s;
     transform: rotate(180deg);
 }
@@ -438,12 +470,4 @@ input {
     height: 100%;
     background-repeat: no-repeat;
 } */
-.imageURI {
-   
-}
-.imageURILabel {
 
-    
-}
-.imageURIRedirect {
-}

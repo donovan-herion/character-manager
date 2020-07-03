@@ -186,8 +186,8 @@
       modifyInput.setAttribute("type", "submit");
 
       let closeBtn = document.createElement("a");
-      closeBtn.classList.add("close-btn-create");
-      closeBtn.innerHTML = "<img src='assets/image/cancel.png'>";
+      closeBtn.classList.add("close-btn-info");
+      closeBtn.innerHTML = "<img src='assets/image/cancel.png' >";
 
       let closeBtnModifyDiv = document.createElement("div");
       closeBtnModifyDiv.classList.add("close-btn-info-div");
@@ -291,8 +291,9 @@
       });
 
       body.addEventListener("click", function (e) {
-        if (e.target.classList.contains("close-btn-create")) {
-          body.removeChild(container);
+        if (e.target.classList.contains("close-btn-info")) {
+          container.removeChild(rightContainer);
+          container.removeChild(leftContainer);
         }
       });
     }
@@ -390,7 +391,7 @@
     let closeBtnModifyDiv = document.createElement("div");
     closeBtnModifyDiv.classList.add("close-btn-create-div");
 
-    let closeBtn = document.createElement("button");
+    let closeBtn = document.createElement("a");
     closeBtn.classList.add("close-btn-create");
     closeBtn.innerHTML = "<img src='assets/image/cancel.png'>";
 
@@ -487,10 +488,11 @@
         });
 
         //remove creation character page
-
         body.addEventListener("click", function (e) {
           if (e.target.classList.contains("close-btn-create")) {
             body.removeChild(container);
+
+
           }
         });
       });
