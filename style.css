@@ -87,7 +87,7 @@ h1 {
     cursor: pointer;
     width: 325px;
     height: 487.5px;
-    box-shadow: none;
+    box-shadow: 15px 7.5px 7.5px black;
     transition-duration: 0.3s;
 }
 
