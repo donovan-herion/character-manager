@@ -75,7 +75,7 @@ h1 {
     cursor: pointer;
     width: 325px;
     height: 487.5px;
-    box-shadow: none;
+    box-shadow: 15px 7.5px 7.5px black;
     transition-duration: 0.3s;
 }
 
@@ -241,6 +241,8 @@ a.modification-btn img {
     padding: 1%;
     position: relative;
     background-color: #e4e4e4;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
 }
 .rightContainer label {
     font-family: 'avengeance_heroic_avengerbold';
@@ -307,6 +309,8 @@ a.modification-btn img {
     border-left: 1px solid black;
     padding: 1%;
     background-color: #2c2c2c;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 .leftContainer label {
@@ -364,7 +368,9 @@ a.modification-btn img {
      font-size: 2em;
      font-weight: bold;
  }
-
+.imageURILabel {
+    color: #2c2c2c;
+}
 label:hover {
     cursor: pointer;
 }
@@ -430,7 +436,7 @@ input {
     border-bottom-left-radius: 40px;
     background-color: #e92c3b;
 }
-.close-btn-info img:hover {
+.close-btn-info:hover img {
     transition-duration: 0.4s;
     transform: rotate(180deg);
 }
