@@ -215,7 +215,10 @@
       let imagePreviewElement = document.createElement("img");
       imagePreviewElement.id = "image-preview";
       imagePreviewElement.src = "wireframe-character-project.png";
-      body.prepend(imagePreviewElement); // on liasse la avec la creation de popup
+      body.appendChild(imagePreviewElement); // Repositionner !!!!!!!!!!!!!!!
+
+      let imgPreview 
+      let imageInput 
   
       document.querySelector(".imageURI").addEventListener("change", () => {
         console.log("je viens de changer");
@@ -223,7 +226,6 @@
         const reader = new FileReader();
   
         let imageSelectorInput = document.querySelector(".imageURI").files[0];
-        let imageSelector = document.querySelector(".imageURI");
   
         reader.readAsDataURL(imageSelectorInput); // load image base 64
   
@@ -231,8 +233,13 @@
           let imagePreviewElement = document.getElementById("image-preview");
           imagePreviewElement.src = event.target.result;
   
-          const imgPreview = document.getElementById("image-preview").src;
-          const imageInput = imgPreview.substring(23, imgPreview.length);
+
+        imgPreview = document.getElementById("image-preview").src;
+        imageInput = imgPreview.substring(23, imgPreview.length);
+         
+        })
+      }) // on ferme le listerer change et load
+        
   
           // end of image handling but the function goes on
 
@@ -288,8 +295,6 @@
           body.removeChild(container);
         }
       });
-    })
-      })
     }
 
 
@@ -412,7 +417,10 @@
     let imagePreviewElement = document.createElement("img");
     imagePreviewElement.id = "image-preview";
     imagePreviewElement.src = "wireframe-character-project.png";
-    body.prepend(imagePreviewElement); // on liasse la avec la creation de popup
+    body.appendChild(imagePreviewElement); // Repositionner !!!!!!!!!!!!!!!
+
+    let imgPreview 
+    let imageInput 
 
     document.querySelector(".imageURI").addEventListener("change", () => {
       console.log("je viens de changer");
@@ -420,7 +428,6 @@
       const reader = new FileReader();
 
       let imageSelectorInput = document.querySelector(".imageURI").files[0];
-      let imageSelector = document.querySelector(".imageURI");
 
       reader.readAsDataURL(imageSelectorInput); // load image base 64
 
@@ -428,8 +435,11 @@
         let imagePreviewElement = document.getElementById("image-preview");
         imagePreviewElement.src = event.target.result;
 
-        const imgPreview = document.getElementById("image-preview").src;
-        const imageInput = imgPreview.substring(23, imgPreview.length);
+        imgPreview = document.getElementById("image-preview").src;
+        imageInput = imgPreview.substring(23, imgPreview.length);
+
+      })
+    }) // on ferme le listerer change et load
 
         // end of image handling but the function goes on
 
@@ -445,15 +455,18 @@
           ) {
             alert("The form has to be completed to create a new character");
           } else {
+            console.log('je me lance create')
             createCharacter();
           }
 
           async function createCharacter() {
+
+            console.log('je pars')
             let newCharacter = {
               name: nameInputValue,
               shortDescription: shortDescriptionValue,
               description: fullDescriptionValue,
-              image: imageInput,
+              image: imageInput
             };
 
             const newCharacterInApi = await fetch(
@@ -481,7 +494,5 @@
           }
         });
       });
-    });
-  });
 
 })();
